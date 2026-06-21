@@ -1,0 +1,85 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`EcoTwin Features UI Snapshot and Interaction Tests Carbon Receipt generation snapshot 1`] = `
+"<div class="receipt-item-row" style="display: flex; justify-content: space-between; font-size: 0.78rem;">
+      <div style="text-align: left; max-width: 65%;">
+        <div style="font-weight: 700; color: #1c1917; display: flex; align-items: center; gap: 4px;">
+          TRANS COMMUTE PROFILE
+          <span class="info-citation" data-tooltip="DEFRA conversion database" style="color: var(--color-green-light); font-size: 0.65rem;">ⓘ</span>
+        </div>
+        <div style="font-size: 0.65rem; color: #666; font-weight: bold;">QTY: CAR</div>
+      </div>
+      <div style="align-self: flex-end; font-weight: 900; color: #1c1917;">229 kg</div>
+    </div><div class="receipt-item-row" style="display: flex; justify-content: space-between; font-size: 0.78rem;">
+      <div style="text-align: left; max-width: 65%;">
+        <div style="font-weight: 700; color: #1c1917; display: flex; align-items: center; gap: 4px;">
+          LONG RANGE AIR TRAVEL
+          <span class="info-citation" data-tooltip="ICAO passenger flight emissions standard" style="color: var(--color-green-light); font-size: 0.65rem;">ⓘ</span>
+        </div>
+        <div style="font-size: 0.65rem; color: #666; font-weight: bold;">QTY: 1-2 FLIGHTS/YR</div>
+      </div>
+      <div style="align-self: flex-end; font-weight: 900; color: #1c1917;">92 kg</div>
+    </div><div class="receipt-item-row" style="display: flex; justify-content: space-between; font-size: 0.78rem;">
+      <div style="text-align: left; max-width: 65%;">
+        <div style="font-weight: 700; color: #1c1917; display: flex; align-items: center; gap: 4px;">
+          DIETARY SELECTIONS
+          <span class="info-citation" data-tooltip="Our World in Data food lifecycle analysis (2018)" style="color: var(--color-green-light); font-size: 0.65rem;">ⓘ</span>
+        </div>
+        <div style="font-size: 0.65rem; color: #666; font-weight: bold;">QTY: VEGETARIAN</div>
+      </div>
+      <div style="align-self: flex-end; font-weight: 900; color: #1c1917;">92 kg</div>
+    </div><div class="receipt-item-row" style="display: flex; justify-content: space-between; font-size: 0.78rem;">
+      <div style="text-align: left; max-width: 65%;">
+        <div style="font-weight: 700; color: #1c1917; display: flex; align-items: center; gap: 4px;">
+          HOUSEHOLD GRID UTILITIES
+          <span class="info-citation" data-tooltip="IEA grid fuel mix carbon coefficients" style="color: var(--color-green-light); font-size: 0.65rem;">ⓘ</span>
+        </div>
+        <div style="font-size: 0.65rem; color: #666; font-weight: bold;">QTY: 1000 BILL</div>
+      </div>
+      <div style="align-self: flex-end; font-weight: 900; color: #1c1917;">78 kg</div>
+    </div><div class="receipt-item-row" style="display: flex; justify-content: space-between; font-size: 0.78rem;">
+      <div style="text-align: left; max-width: 65%;">
+        <div style="font-weight: 700; color: #1c1917; display: flex; align-items: center; gap: 4px;">
+          HEATING &amp; COOLING SYS
+          <span class="info-citation" data-tooltip="EIA residential climate fuel consumption models" style="color: var(--color-green-light); font-size: 0.65rem;">ⓘ</span>
+        </div>
+        <div style="font-size: 0.65rem; color: #666; font-weight: bold;">QTY: GAS</div>
+      </div>
+      <div style="align-self: flex-end; font-weight: 900; color: #1c1917;">100 kg</div>
+    </div><div class="receipt-item-row" style="display: flex; justify-content: space-between; font-size: 0.78rem;">
+      <div style="text-align: left; max-width: 65%;">
+        <div style="font-weight: 700; color: #1c1917; display: flex; align-items: center; gap: 4px;">
+          SHIPPING &amp; PACKAGING
+          <span class="info-citation" data-tooltip="WEF e-commerce parcel shipping emissions report" style="color: var(--color-green-light); font-size: 0.65rem;">ⓘ</span>
+        </div>
+        <div style="font-size: 0.65rem; color: #666; font-weight: bold;">QTY: 2-3 ORDER/WK</div>
+      </div>
+      <div style="align-self: flex-end; font-weight: 900; color: #1c1917;">32 kg</div>
+    </div><div class="receipt-item-row" style="display: flex; justify-content: space-between; font-size: 0.78rem;">
+      <div style="text-align: left; max-width: 65%;">
+        <div style="font-weight: 700; color: #1c1917; display: flex; align-items: center; gap: 4px;">
+          CONSUMPTION &amp; APPAREL
+          <span class="info-citation" data-tooltip="Carbon Trust consumer product lifecycle models" style="color: var(--color-green-light); font-size: 0.65rem;">ⓘ</span>
+        </div>
+        <div style="font-size: 0.65rem; color: #666; font-weight: bold;">QTY: STANDARD</div>
+      </div>
+      <div style="align-self: flex-end; font-weight: 900; color: #1c1917;">50 kg</div>
+    </div><div class="receipt-item-row" style="display: flex; justify-content: space-between; font-size: 0.78rem;">
+      <div style="text-align: left; max-width: 65%;">
+        <div style="font-weight: 700; color: #1c1917; display: flex; align-items: center; gap: 4px;">
+          MUNICIPAL SOLID WASTE
+          <span class="info-citation" data-tooltip="EPA WARM landfill methane emission equations" style="color: var(--color-green-light); font-size: 0.65rem;">ⓘ</span>
+        </div>
+        <div style="font-size: 0.65rem; color: #666; font-weight: bold;">QTY: STANDARD</div>
+      </div>
+      <div style="align-self: flex-end; font-weight: 900; color: #1c1917;">33 kg</div>
+    </div>"
+`;
+
+exports[`EcoTwin Features UI Snapshot and Interaction Tests Trade-Off Machine initial render and interaction snapshots 1`] = `""`;
+
+exports[`EcoTwin Features UI Snapshot and Interaction Tests Trade-Off Machine initial render and interaction snapshots 2`] = `"<div class="tradeoff-scale-item luxury-item" role="button" tabindex="0" aria-label="Remove Beef Dinner from scale"><span>🥩</span> <span>Beef Dinner (15kg)</span></div>"`;
+
+exports[`EcoTwin Features UI Snapshot and Interaction Tests Trade-Off Machine initial render and interaction snapshots 3`] = `"⚠️ Heavy left! Add 15 kg of offsets to balance the luxury."`;
+
+exports[`EcoTwin Features UI Snapshot and Interaction Tests Trade-Off Machine initial render and interaction snapshots 4`] = `"✨ Balanced! You have successfully offset your carbon luxury! 🎉"`;

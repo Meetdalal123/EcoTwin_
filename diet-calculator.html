@@ -1,0 +1,726 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com; style-src 'self' 'unsafe-inline' https://unpkg.com; img-src 'self' data:; object-src 'none'; base-uri 'self';">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoTwin - Diet Carbon Footprint Calculator</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/style.css?v=35">
+  <link rel="stylesheet" href="css/components.css?v=35">
+  <link rel="stylesheet" href="css/animations.css?v=35">
+  <link rel="stylesheet" href="css/diet-calculator.css">
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@0.475.0/dist/umd/lucide.min.js"></script>
+
+
+
+</head>
+<body>
+
+  <!-- Floating Background Glow Blobs -->
+  <div class="bg-glow-blob blob-1"></div>
+  <div class="bg-glow-blob blob-2"></div>
+  <div class="bg-glow-blob blob-4"></div>
+
+  <!-- Full-Screen Background Scenery Layer -->
+  <div class="full-bg-layer" ></div>
+  <div class="bg-gradient-overlay" ></div>
+
+  <!-- Header -->
+  <header class="calculator-header">
+    <div class="calculator-brand" onclick="window.location.href='index.html'">
+      <i data-lucide="leaf"></i> EcoTwin
+    </div>
+    <button class="btn btn-secondary glow-btn calculator-back-btn" onclick="window.location.href='index.html'">
+      <i data-lucide="arrow-left"></i> Back to Home
+    </button>
+  </header>
+
+  <!-- Calculator Container -->
+  <div class="app-container calculator-container-wrapper">
+    <div class="container calculator-inner-container">
+      
+      <div class="diet-calculator-wrapper">
+        <!-- Top Progress & Steps -->
+        <div class="diet-header">
+          <div class="diet-progress-track">
+            <div class="diet-progress-fill" id="diet-progress-fill"></div>
+          </div>
+          <div class="diet-step-dots" id="diet-step-dots">
+            <div class="diet-dot active" data-step="1"></div>
+            <div class="diet-dot" data-step="2"></div>
+            <div class="diet-dot" data-step="3"></div>
+            <div class="diet-dot" data-step="4"></div>
+            <div class="diet-dot" data-step="5"></div>
+          </div>
+        </div>
+
+        <!-- Questions Track -->
+        <div class="diet-questions-viewport">
+          <div class="diet-questions-track" id="diet-questions-track">
+            
+            <!-- STEP 1 -->
+            <div class="quiz-card active-step-pane" data-step="1">
+              <span class="question-number">Step 01 / 05</span>
+              <h3 class="question-text">What does your morning usually look like?<span class="info-citation" data-tooltip="Morning dairy and bread emission coefficients from Poore & Nemecek (2018).">ⓘ</span></h3>
+              <p class="question-description">Breakfast choices kickstart your daily carbon outputs.</p>
+              
+              <div class="quiz-options-grid">
+                <div class="quiz-option-card" data-val="0.3" data-category="breakfast" data-label="Just chai & biscuits" data-desc="Light start, minimal impact">
+                  <div class="quiz-option-icon"><i data-lucide="coffee"></i></div>
+                  <div class="quiz-option-content">
+                    <h4>Just chai & biscuits</h4>
+                    <p>Light start, minimal impact</p>
+                  </div>
+                </div>
+                <div class="quiz-option-card" data-val="0.5" data-category="breakfast" data-label="Classic Indian Breakfast" data-desc="Poha / Upma / Idli / Dosa">
+                  <div class="quiz-option-icon"><i data-lucide="soup"></i></div>
+                  <div class="quiz-option-content">
+                    <h4>Poha / Upma / Idli / Dosa</h4>
+                    <p>Classic Indian breakfast</p>
+                  </div>
+                </div>
+                <div class="quiz-option-card" data-val="1.2" data-category="breakfast" data-label="Eggs, toast or omelette" data-desc="Protein-forward morning">
+                  <div class="quiz-option-icon"><i data-lucide="egg"></i></div>
+                  <div class="quiz-option-content">
+                    <h4>Eggs, toast or omelette</h4>
+                    <p>Protein-forward morning</p>
+                  </div>
+                </div>
+                <div class="quiz-option-card" data-val="2.4" data-category="breakfast" data-label="Paratha with chicken / meat" data-desc="Heavy, high-protein start">
+                  <div class="quiz-option-icon"><i data-lucide="drumstick"></i></div>
+                  <div class="quiz-option-content">
+                    <h4>Paratha with chicken / meat</h4>
+                    <p>Heavy, high-protein start</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- STEP 2 -->
+            <div class="quiz-card" data-step="2">
+              <span class="question-number">Step 02 / 05</span>
+              <h3 class="question-text">What's usually on your lunch plate?<span class="info-citation" data-tooltip="Based on standard Indian vegetarian and non-vegetarian thali carbon profiles.">ⓘ</span></h3>
+              <p class="question-description">Mid-day meals represent a significant portion of dietary emissions.</p>
+              
+              <div class="quiz-options-grid">
+                <div class="quiz-option-card" data-val="0.6" data-category="lunch" data-label="Dal, sabzi, roti or rice" data-desc="Traditional vegetarian thali">
+                  <div class="quiz-option-icon"><i data-lucide="salad"></i></div>
+                  <div class="quiz-option-content">
+                    <h4>Dal, sabzi, roti or rice</h4>
+                    <p>Traditional vegetarian thali</p>
+                  </div>
+                </div>
+                <div class="quiz-option-card" data-val="1.1" data-category="lunch" data-label="Vegetarian but dairy-rich" data-desc="Rajma, chole, paneer dishes">
+                  <div class="quiz-option-icon"><i data-lucide="soup"></i></div>
+                  <div class="quiz-option-content">
+                    <h4>Rajma, chole, paneer dishes</h4>
+                    <p>Vegetarian but dairy-rich</p>
+                  </div>
+                </div>
+                <div class="quiz-option-card" data-val="2.2" data-category="lunch" data-label="Chicken curry, egg curry, fish" data-desc="Non-veg, moderate impact">
+                  <div class="quiz-option-icon"><i data-lucide="drumstick"></i></div>
+                  <div class="quiz-option-content">
+                    <h4>Chicken curry, egg curry, fish</h4>
+                    <p>Non-veg, moderate impact</p>
+                  </div>
+                </div>
+                <div class="quiz-option-card" data-val="3.8" data-category="lunch" data-label="Mutton, beef or heavy meat dish" data-desc="High carbon, high protein">
+                  <div class="quiz-option-icon"><i data-lucide="beef"></i></div>
+                  <div class="quiz-option-content">
+                    <h4>Mutton, beef or heavy meat dish</h4>
+                    <p>High carbon, high protein</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- STEP 3 -->
+            <div class="quiz-card" data-step="3">
+              <span class="question-number">Step 03 / 05</span>
+              <h3 class="question-text">How does your dinner usually go?<span class="info-citation" data-tooltip="Correlates home cooking fuels and commercial delivery packaging footprints.">ⓘ</span></h3>
+              <p class="question-description">Evening options dictate the remaining baseline of your daily food score.</p>
+              
+              <div class="quiz-options-grid">
+                <div class="quiz-option-card" data-val="0.4" data-category="dinner" data-label="Light Dinner" data-desc="khichdi, soup, leftovers">
+                  <div class="quiz-option-icon"><i data-lucide="moon"></i></div>
+                  <div class="quiz-option-content">
+                    <h4>Khichdi, soup, leftovers</h4>
+                    <p>Easy on the stomach and planet</p>
+                  </div>
+                </div>
+                <div class="quiz-option-card" data-val="0.8" data-category="dinner" data-label="Home-cooked vegetarian meal" data-desc="Balanced and sustainable">
+                  <div class="quiz-option-icon"><i data-lucide="home"></i></div>
+                  <div class="quiz-option-content">
+                    <h4>Home-cooked vegetarian meal</h4>
+                    <p>Balanced and sustainable</p>
+                  </div>
+                </div>
+                <div class="quiz-option-card" data-val="2.0" data-category="dinner" data-label="Home-cooked with meat or fish" data-desc="Protein-rich family dinner">
+                  <div class="quiz-option-icon"><i data-lucide="cooking-pot"></i></div>
+                  <div class="quiz-option-content">
+                    <h4>Home-cooked with meat or fish</h4>
+                    <p>Protein-rich family dinner</p>
+                  </div>
+                </div>
+                <div class="quiz-option-card" data-val="2.8" data-category="dinner" data-label="Ordered in" data-desc="biryani, kebabs, burger">
+                  <div class="quiz-option-icon"><i data-lucide="pizza"></i></div>
+                  <div class="quiz-option-content">
+                    <h4>Ordered in</h4>
+                    <p>biryani, kebabs, burger (Convenient, higher footprint)</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- STEP 4 -->
+            <div class="quiz-card" data-step="4">
+              <span class="question-number">Step 04 / 05</span>
+              <h3 class="question-text">How often do you eat red meat?<span class="info-citation" data-tooltip="IPCC and FAO lifecycle studies show beef/mutton have high methane footprints.">ⓘ</span></h3>
+              <p class="question-description">(mutton, beef, pork)</p>
+              
+              <div class="quiz-options-grid">
+                <div class="quiz-option-card" data-val="0" data-category="redMeat" data-label="Never" data-desc="Purely poultry or veg">
+                  <div class="quiz-option-icon"><i data-lucide="leaf"></i></div>
+                  <div class="quiz-option-content">
+                    <h4>Never</h4>
+                    <p>Purely poultry or veg</p>
+                  </div>
+                </div>
+                <div class="quiz-option-card" data-val="0.5" data-category="redMeat" data-label="1–2 times a week" data-desc="Occasional indulgence">
+                  <div class="quiz-option-icon"><i data-lucide="calendar-days"></i></div>
+                  <div class="quiz-option-content">
+                    <h4>1–2 times a week</h4>
+                    <p>Occasional indulgence</p>
+                  </div>
+                </div>
+                <div class="quiz-option-card" data-val="1.2" data-category="redMeat" data-label="3–4 times a week" data-desc="Regular habit">
+                  <div class="quiz-option-icon"><i data-lucide="calendar-range"></i></div>
+                  <div class="quiz-option-content">
+                    <h4>3–4 times a week</h4>
+                    <p>Regular habit</p>
+                  </div>
+                </div>
+                <div class="quiz-option-card" data-val="2.1" data-category="redMeat" data-label="Almost daily" data-desc="Meat is a staple">
+                  <div class="quiz-option-icon"><i data-lucide="alert-circle"></i></div>
+                  <div class="quiz-option-content">
+                    <h4>Almost daily</h4>
+                    <p>Meat is a staple</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- STEP 5 -->
+            <div class="quiz-card" data-step="5">
+              <span class="question-number">Step 05 / 05</span>
+              <h3 class="question-text">What's your dairy habit?<span class="info-citation" data-tooltip="Dairy lifecycle carbon footprints include enteric fermentation and milk transport.">ⓘ</span></h3>
+              <p class="question-description">Ghee, curd, and milk products represent key carbon variables.</p>
+              
+              <div class="quiz-options-grid">
+                <div class="quiz-option-card" data-val="0.1" data-category="dairy" data-label="Minimal dairy" data-desc="plant milk or black tea">
+                  <div class="quiz-option-icon"><i data-lucide="leaf"></i></div>
+                  <div class="quiz-option-content">
+                    <h4>Minimal</h4>
+                    <p>plant milk or black tea (Low dairy footprint)</p>
+                  </div>
+                </div>
+                <div class="quiz-option-card" data-val="0.4" data-category="dairy" data-label="Chai/coffee with milk daily" data-desc="Moderate, typical Indian habit">
+                  <div class="quiz-option-icon"><i data-lucide="coffee"></i></div>
+                  <div class="quiz-option-content">
+                    <h4>Chai or coffee with milk daily</h4>
+                    <p>Moderate, typical Indian habit</p>
+                  </div>
+                </div>
+                <div class="quiz-option-card" data-val="0.9" data-category="dairy" data-label="Paneer, curd, ghee regularly" data-desc="Dairy is central to your diet">
+                  <div class="quiz-option-icon"><i data-lucide="cheese"></i></div>
+                  <div class="quiz-option-content">
+                    <h4>Paneer, curd, ghee regularly</h4>
+                    <p>Dairy is central to your diet</p>
+                  </div>
+                </div>
+                <div class="quiz-option-card" data-val="1.5" data-category="dairy" data-label="Heavy dairy consumption" data-desc="lassi, cheese, butter daily">
+                  <div class="quiz-option-icon"><i data-lucide="milk"></i></div>
+                  <div class="quiz-option-content">
+                    <h4>Heavy</h4>
+                    <p>lassi, cheese, butter daily (High dairy consumption)</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- RESULTS SCREEN -->
+            <div class="quiz-card diet-result-pane" data-step="6">
+              <div class="diet-result-glass-card">
+                <span class="diet-result-subtitle" class="diet-centered-flex">YOUR DIET CARBON FOOTPRINT<span class="info-citation" data-tooltip="Aggregated dietary footprint calculations based on Poore & Nemecek (2018) database.">ⓘ</span></span>
+                <div class="diet-result-score-container">
+                  <span class="diet-result-score" id="diet-result-monthly-score">0</span>
+                  <span class="diet-result-score-unit">kg CO₂ / month</span>
+                </div>
+                <p class="diet-result-context" id="diet-result-context-text">🌿 Your plate is healing the planet.</p>
+
+                <hr class="diet-divider">
+
+                <!-- Breakdown -->
+                <div class="diet-breakdown-section">
+                  <h4 class="diet-section-title" class="diet-centered-flex">BREAKDOWN<span class="info-citation" data-tooltip="Breakdown values reflect category-specific lifecycle emissions per portion.">ⓘ</span></h4>
+                  <div class="diet-breakdown-container">
+                    <div class="diet-breakdown-row" data-category="breakfast">
+                      <div class="diet-breakdown-label">🌅 Breakfast</div>
+                      <div class="diet-breakdown-bar-wrapper">
+                        <div class="diet-breakdown-bar" id="diet-bar-breakfast"></div>
+                      </div>
+                      <div class="diet-breakdown-val" id="diet-val-breakfast">0 kg/mo</div>
+                    </div>
+                    <div class="diet-breakdown-row" data-category="lunch">
+                      <div class="diet-breakdown-label">🌞 Lunch</div>
+                      <div class="diet-breakdown-bar-wrapper">
+                        <div class="diet-breakdown-bar" id="diet-bar-lunch"></div>
+                      </div>
+                      <div class="diet-breakdown-val" id="diet-val-lunch">0 kg/mo</div>
+                    </div>
+                    <div class="diet-breakdown-row" data-category="dinner">
+                      <div class="diet-breakdown-label">🌙 Dinner</div>
+                      <div class="diet-breakdown-bar-wrapper">
+                        <div class="diet-breakdown-bar" id="diet-bar-dinner"></div>
+                      </div>
+                      <div class="diet-breakdown-val" id="diet-val-dinner">0 kg/mo</div>
+                    </div>
+                    <div class="diet-breakdown-row" data-category="redMeat">
+                      <div class="diet-breakdown-label">🥩 Red Meat</div>
+                      <div class="diet-breakdown-bar-wrapper">
+                        <div class="diet-breakdown-bar" id="diet-bar-redmeat"></div>
+                      </div>
+                      <div class="diet-breakdown-val" id="diet-val-redmeat">0 kg/mo</div>
+                    </div>
+                    <div class="diet-breakdown-row" data-category="dairy">
+                      <div class="diet-breakdown-label">🥛 Dairy</div>
+                      <div class="diet-breakdown-bar-wrapper">
+                        <div class="diet-breakdown-bar" id="diet-bar-dairy"></div>
+                      </div>
+                      <div class="diet-breakdown-val" id="diet-val-dairy">0 kg/mo</div>
+                    </div>
+                  </div>
+                </div>
+
+                <hr class="diet-divider">
+
+                <!-- Equivalents -->
+                <div class="diet-equivalents-section">
+                  <h4 class="diet-section-title" class="diet-centered-flex">EQUIVALENT TO<span class="info-citation" data-tooltip="Vehicle equivalents use average 120g/km CO2, trees absorb ~20kg/yr, flights use ICAO averages.">ⓘ</span></h4>
+                  <div class="diet-equivalents-grid">
+                    <div class="diet-eq-card">
+                      <span class="diet-eq-icon">🚗</span>
+                      <span class="diet-eq-val" id="diet-eq-driving">0 km</span>
+                      <span class="diet-eq-label">driving every month</span>
+                    </div>
+                    <div class="diet-eq-card">
+                      <span class="diet-eq-icon">🌳</span>
+                      <span class="diet-eq-val" id="diet-eq-trees">0</span>
+                      <span class="diet-eq-label">trees to offset annually</span>
+                    </div>
+                    <div class="diet-eq-card">
+                      <span class="diet-eq-icon">✈️</span>
+                      <span class="diet-eq-val" id="diet-eq-flights">0%</span>
+                      <span class="diet-eq-label">Mumbai→Delhi flight / mo</span>
+                    </div>
+                  </div>
+                </div>
+
+                <hr class="diet-divider">
+
+                <!-- Best Swap -->
+                <div class="diet-swap-section">
+                  <h4 class="diet-section-title" class="diet-centered-flex">YOUR BEST SWAP<span class="info-citation" data-tooltip="Swap savings calculated using marginal footprint differences between active selections.">ⓘ</span></h4>
+                  <div class="diet-swap-card">
+                    <span class="diet-swap-icon">💡</span>
+                    <div class="diet-swap-content">
+                      <p class="diet-swap-recommendation" id="diet-swap-text">Loading best swap...</p>
+                      <div class="diet-swap-stats">
+                        <span id="diet-swap-saved">saves 0 kg CO₂/month</span>
+                        <span id="diet-swap-trees-saved">equivalent to planting 0 trees/year</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Action buttons -->
+                <div class="diet-actions">
+                  <button class="btn btn-secondary glow-btn" id="btn-retake-diet">
+                    <i data-lucide="rotate-ccw"></i> Retake Quiz
+                  </button>
+                  <button class="btn btn-secondary glow-btn" id="btn-goto-dashboard">
+                    <i data-lucide="layout-dashboard"></i> See Full Dashboard
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Javascript Logic -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Initialize Lucide Icons
+      lucide.createIcons();
+      
+      // Initialize Calculator
+      DietCalculator.init();
+    });
+
+    const DietCalculator = {
+      dietStep: 1,
+      dietSelections: {
+        breakfast: null, breakfastLabel: "", breakfastDesc: "",
+        lunch: null, lunchLabel: "", lunchDesc: "",
+        dinner: null, dinnerLabel: "", dinnerDesc: "",
+        redMeat: null, redMeatLabel: "", redMeatDesc: "",
+        dairy: null, dairyLabel: "", dairyDesc: ""
+      },
+
+      init() {
+        // Load saved state
+        const saved = localStorage.getItem('eco_diet_calculator');
+        if (saved) {
+          try {
+            this.dietSelections = JSON.parse(saved);
+          } catch(e) {}
+        }
+
+        // Add accessibility attributes dynamically
+        document.querySelectorAll('.quiz-option-card').forEach(card => {
+          card.setAttribute('tabindex', '0');
+          card.setAttribute('role', 'button');
+          const label = card.dataset.label || (card.querySelector('h4') ? card.querySelector('h4').textContent : "");
+          card.setAttribute('aria-label', `Select: ${label}`);
+        });
+
+        document.querySelectorAll('.diet-dot').forEach(dot => {
+          dot.setAttribute('tabindex', '0');
+          dot.setAttribute('role', 'button');
+          const step = dot.dataset.step || "";
+          dot.setAttribute('aria-label', `Go to step ${step}`);
+        });
+
+        this.restoreSelections();
+        this.bindEvents();
+        this.determineStep();
+      },
+
+      restoreSelections() {
+        const categories = ['breakfast', 'lunch', 'dinner', 'redMeat', 'dairy'];
+        categories.forEach(cat => {
+          const val = this.dietSelections[cat];
+          if (val !== null && val !== undefined) {
+            document.querySelectorAll(`[data-category="${cat}"]`).forEach(card => {
+              if (parseFloat(card.dataset.val) === val) {
+                card.classList.add('active');
+              } else {
+                card.classList.remove('active');
+              }
+            });
+          }
+        });
+      },
+
+      bindEvents() {
+        // Keydown handlers for options
+        document.querySelectorAll('.quiz-option-card').forEach(card => {
+          card.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              card.click();
+            }
+          });
+        });
+
+        // Keydown handlers for navigation dots
+        document.querySelectorAll('.diet-dot').forEach(dot => {
+          dot.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+              e.preventDefault();
+              dot.click();
+            }
+          });
+        });
+
+        // Cards and pills selection clicks
+        document.querySelectorAll('.quiz-option-card').forEach(card => {
+          card.addEventListener('click', () => {
+            const cat = card.dataset.category;
+            const val = parseFloat(card.dataset.val);
+            const label = card.dataset.label || "";
+            const desc = card.dataset.desc || "";
+
+            // Update DOM active classes
+            document.querySelectorAll(`[data-category="${cat}"]`).forEach(c => c.classList.remove('active'));
+            card.classList.add('active');
+
+            // Save state
+            this.dietSelections[cat] = val;
+            this.dietSelections[cat + 'Label'] = label;
+            this.dietSelections[cat + 'Desc'] = desc;
+            localStorage.setItem('eco_diet_calculator', JSON.stringify(this.dietSelections));
+
+            // Move to next step after a tiny delay
+            setTimeout(() => {
+              if (this.dietStep < 5) {
+                this.showStep(this.dietStep + 1);
+              } else {
+                this.showStep(6);
+              }
+            }, 400);
+          });
+        });
+
+        // Retake quiz button
+        const retakeBtn = document.getElementById('btn-retake-diet');
+        if (retakeBtn) {
+          retakeBtn.addEventListener('click', () => {
+            this.dietSelections = {
+              breakfast: null, breakfastLabel: "", breakfastDesc: "",
+              lunch: null, lunchLabel: "", lunchDesc: "",
+              dinner: null, dinnerLabel: "", dinnerDesc: "",
+              redMeat: null, redMeatLabel: "", redMeatDesc: "",
+              dairy: null, dairyLabel: "", dairyDesc: ""
+            };
+            localStorage.removeItem('eco_diet_calculator');
+            document.querySelectorAll('.quiz-option-card').forEach(c => c.classList.remove('active'));
+            this.showStep(1);
+          });
+        }
+
+        // See full dashboard button
+        const dashBtn = document.getElementById('btn-goto-dashboard');
+        if (dashBtn) {
+          dashBtn.addEventListener('click', () => {
+            window.location.href = 'index.html#scene-dashboard';
+          });
+        }
+
+        // Top dot triggers
+        document.querySelectorAll('.diet-dot').forEach(dot => {
+          dot.addEventListener('click', () => {
+            const step = parseInt(dot.dataset.step);
+            if (step <= 5) {
+              this.showStep(step);
+            }
+          });
+        });
+      },
+
+      determineStep() {
+        const isCompleted = this.dietSelections.breakfast !== null &&
+                            this.dietSelections.lunch !== null &&
+                            this.dietSelections.dinner !== null &&
+                            this.dietSelections.redMeat !== null &&
+                            this.dietSelections.dairy !== null;
+        
+        if (isCompleted) {
+          this.showStep(6);
+        } else {
+          let firstIncomplete = 1;
+          if (this.dietSelections.breakfast !== null) firstIncomplete = 2;
+          if (this.dietSelections.breakfast !== null && this.dietSelections.lunch !== null) firstIncomplete = 3;
+          if (this.dietSelections.breakfast !== null && this.dietSelections.lunch !== null && this.dietSelections.dinner !== null) firstIncomplete = 4;
+          if (this.dietSelections.breakfast !== null && this.dietSelections.lunch !== null && this.dietSelections.dinner !== null && this.dietSelections.redMeat !== null) firstIncomplete = 5;
+          this.showStep(firstIncomplete);
+        }
+      },
+
+      showStep(stepNum) {
+        this.dietStep = stepNum;
+
+        // Progress bar
+        const fill = document.getElementById('diet-progress-fill');
+        if (fill) {
+          fill.style.width = stepNum === 6 ? '100%' : `${stepNum * 20}%`;
+        }
+
+        // Dot highlight
+        document.querySelectorAll('.diet-dot').forEach((dot, idx) => {
+          if (idx + 1 === stepNum) dot.classList.add('active');
+          else dot.classList.remove('active');
+        });
+
+        // Hide dots header on results
+        const header = document.querySelector('.diet-header');
+        if (header) {
+          if (stepNum === 6) {
+            header.style.opacity = '0';
+            header.style.pointerEvents = 'none';
+          } else {
+            header.style.opacity = '1';
+            header.style.pointerEvents = 'auto';
+          }
+        }
+
+        // Slide transform
+        const track = document.getElementById('diet-questions-track');
+        if (track) {
+          track.style.transform = `translateX(-${(stepNum - 1) * 16.66666}%)`;
+        }
+
+        // Fade pane opacities
+        document.querySelectorAll('.diet-calculator-wrapper .quiz-card').forEach(pane => {
+          const s = parseInt(pane.dataset.step);
+          if (s === stepNum) {
+            pane.classList.add('active-step-pane');
+            pane.style.opacity = '1';
+            pane.style.pointerEvents = 'auto';
+          } else {
+            pane.classList.remove('active-step-pane');
+            pane.style.opacity = '0';
+            pane.style.pointerEvents = 'none';
+          }
+        });
+
+        if (stepNum === 6) {
+          this.calculateResults();
+        }
+      },
+
+      calculateResults() {
+        const breakfast = this.dietSelections.breakfast || 0;
+        const lunch = this.dietSelections.lunch || 0;
+        const dinner = this.dietSelections.dinner || 0;
+        const redMeat = this.dietSelections.redMeat || 0;
+        const dairy = this.dietSelections.dairy || 0;
+
+        const dailyTotal = breakfast + lunch + dinner + redMeat + dairy;
+        const monthly = dailyTotal * 30;
+        const annual = dailyTotal * 365;
+
+        // Count up score animation
+        const scoreEl = document.getElementById('diet-result-monthly-score');
+        if (scoreEl) {
+          let start = 0;
+          const target = Math.round(monthly);
+          const duration = 1200;
+          const startTime = performance.now();
+
+          const update = (timestamp) => {
+            const elapsed = timestamp - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const current = Math.round(start + (target - start) * progress * (2 - progress));
+            scoreEl.textContent = current;
+            if (progress < 1) requestAnimationFrame(update);
+          };
+          requestAnimationFrame(update);
+        }
+
+        // Context line
+        const ctxEl = document.getElementById('diet-result-context-text');
+        if (ctxEl) {
+          ctxEl.className = 'diet-result-context';
+          if (monthly < 40) {
+            ctxEl.textContent = "🌿 Your plate is healing the planet.";
+            ctxEl.classList.add('green-score');
+          } else if (monthly <= 80) {
+            ctxEl.textContent = "🟡 Room to improve — small swaps go far.";
+            ctxEl.classList.add('amber-score');
+          } else if (monthly <= 130) {
+            ctxEl.textContent = "🟠 Your diet is above the sustainable range.";
+            ctxEl.classList.add('amber-score');
+          } else {
+            ctxEl.textContent = "🔴 Your food choices have a significant impact.";
+            ctxEl.classList.add('red-score');
+          }
+        }
+
+        // Update bars
+        const updateBar = (id, valDaily) => {
+          const bar = document.getElementById(`diet-bar-${id}`);
+          const label = document.getElementById(`diet-val-${id}`);
+          const monthlyCatVal = valDaily * 30;
+          
+          if (label) label.textContent = `${monthlyCatVal.toFixed(1)} kg/mo`;
+          if (bar) {
+            bar.className = 'diet-breakdown-bar';
+            if (valDaily < 0.8) bar.classList.add('low-impact');
+            else if (valDaily < 2.0) bar.classList.add('med-impact');
+            else bar.classList.add('high-impact');
+
+            bar.style.width = '0%';
+            setTimeout(() => {
+              const maxScale = 100; // max kg/mo for scaling
+              const pct = Math.min(100, (monthlyCatVal / maxScale) * 100);
+              bar.style.width = `${pct}%`;
+            }, 100);
+          }
+        };
+
+        updateBar('breakfast', breakfast);
+        updateBar('lunch', lunch);
+        updateBar('dinner', dinner);
+        updateBar('redmeat', redMeat);
+        updateBar('dairy', dairy);
+
+        // Equivalents
+        const driving = monthly * 8.3;
+        const trees = Math.ceil(annual / 20);
+        const flights = (monthly / 140) * 100;
+
+        document.getElementById('diet-eq-driving').textContent = `${Math.round(driving).toLocaleString()} km`;
+        document.getElementById('diet-eq-trees').textContent = `${trees}`;
+        document.getElementById('diet-eq-flights').textContent = `${Math.round(flights)}%`;
+
+        // Best Swap recommendation
+        const cats = [
+          { key: 'breakfast', name: 'Breakfast', score: breakfast, label: this.dietSelections.breakfastLabel },
+          { key: 'lunch', name: 'Lunch', score: lunch, label: this.dietSelections.lunchLabel },
+          { key: 'dinner', name: 'Dinner', score: dinner, label: this.dietSelections.dinnerLabel },
+          { key: 'redMeat', name: 'Red Meat', score: redMeat, label: this.dietSelections.redMeatLabel },
+          { key: 'dairy', name: 'Dairy', score: dairy, label: this.dietSelections.dairyLabel }
+        ];
+
+        cats.sort((a, b) => b.score - a.score);
+        const highest = cats[0];
+
+        let swap = "";
+        let better = "";
+        let savedDaily = 0;
+
+        if (highest.key === 'breakfast') {
+          swap = "Replace parathas or protein-heavy meals with lighter alternatives.";
+          better = "Poha / Upma / Idli / Dosa";
+          savedDaily = Math.max(0.2, highest.score - 0.5);
+        } else if (highest.key === 'lunch') {
+          swap = "Swap mutton or heavy meat curries for a traditional vegetarian thali.";
+          better = "Dal, sabzi, roti or rice";
+          savedDaily = Math.max(0.5, highest.score - 0.6);
+        } else if (highest.key === 'dinner') {
+          swap = "Swap ordered-in biryani or burgers for a home-cooked vegetarian dinner.";
+          better = "Home-cooked vegetarian meal";
+          savedDaily = Math.max(0.4, highest.score - 0.8);
+        } else if (highest.key === 'redMeat') {
+          swap = "Reduce red meat consumption by swapping it with poultry, fish, or plant proteins.";
+          better = "Never / Occasional red meat";
+          savedDaily = Math.max(0.5, highest.score);
+        } else {
+          swap = "Replace paneer, ghee, or heavy milk with plant-based alternatives or black tea/coffee.";
+          better = "Plant milk or black tea";
+          savedDaily = Math.max(0.3, highest.score - 0.1);
+        }
+
+        const savedMonthly = savedDaily * 30;
+        const savedTrees = Math.ceil((savedDaily * 365) / 20);
+
+        document.getElementById('diet-swap-text').textContent = `Replace high-impact ${highest.name.toLowerCase()} choices with ${better}.`;
+        document.getElementById('diet-swap-saved').textContent = `saves ${savedMonthly.toFixed(1)} kg CO₂/month`;
+        document.getElementById('diet-swap-trees-saved').textContent = `equivalent to planting ${savedTrees} trees/year`;
+      }
+    };
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,200 @@
+/* ── Login Modal ─────────────────────────────────────────────── */
+#g-login-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  align-items: center;
+  justify-content: center;
+}
+#g-login-modal.visible {
+  display: flex;
+}
+
+.g-modal-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(2, 10, 6, 0.88);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+}
+
+.g-modal-card {
+  position: relative;
+  z-index: 1;
+  background: rgba(8, 20, 13, 0.85);
+  border: 1px solid rgba(52, 211, 153, 0.2);
+  border-radius: 24px;
+  padding: 3rem 2.5rem 2.5rem;
+  max-width: 420px;
+  width: 90%;
+  text-align: center;
+  box-shadow: 0 30px 80px rgba(0,0,0,0.7), 0 0 60px rgba(52, 211, 153, 0.06);
+  overflow: hidden;
+}
+
+.g-modal-glow {
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(52, 211, 153, 0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.g-modal-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.3rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #34d399, #06b6d4);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.g-modal-title {
+  font-size: 1.85rem;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.25;
+  margin: 0 0 0.85rem;
+  font-family: 'Outfit', sans-serif;
+}
+
+.g-modal-subtitle {
+  color: rgba(255,255,255,0.5);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  margin: 0 0 1.75rem;
+}
+
+.g-modal-features {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin-bottom: 2rem;
+  text-align: left;
+  background: rgba(52, 211, 153, 0.04);
+  border: 1px solid rgba(52, 211, 153, 0.1);
+  border-radius: 14px;
+  padding: 1rem 1.25rem;
+}
+
+.g-modal-feature {
+  font-size: 0.85rem;
+  color: rgba(255,255,255,0.7);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.g-modal-feature span {
+  font-size: 1rem;
+}
+
+#g-modal-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1.25rem;
+}
+
+.g-modal-privacy {
+  color: rgba(255,255,255,0.25);
+  font-size: 0.72rem;
+  margin: 0;
+}
+
+/* ── Header Avatar Pill (shown after login) ──────────────────── */
+#g-header-pill {
+  display: none;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(52, 211, 153, 0.08);
+  border: 1px solid rgba(52, 211, 153, 0.2);
+  border-radius: 30px;
+  padding: 0.3rem 0.75rem 0.3rem 0.35rem;
+  cursor: default;
+}
+#g-header-pill.visible {
+  display: flex;
+}
+
+#g-header-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1.5px solid rgba(52, 211, 153, 0.5);
+  flex-shrink: 0;
+}
+
+#g-header-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #fff;
+}
+
+#g-signout-pill-btn {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.35);
+  font-size: 0.72rem;
+  cursor: pointer;
+  padding: 0;
+  margin-left: 0.25rem;
+  transition: color 0.2s;
+}
+#g-signout-pill-btn:hover {
+  color: #ff8080;
+}
+
+/* Custom Mock Google Button Styles */
+.mock-google-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background-color: #131314;
+  color: #e3e3e3;
+  border: 1px solid #8e918f;
+  border-radius: 20px;
+  padding: 0 16px;
+  width: 260px;
+  height: 40px;
+  box-sizing: border-box;
+  cursor: pointer;
+  font-family: 'Outfit', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.25s, border-color 0.25s, transform 0.25s, box-shadow 0.25s;
+  user-select: none;
+  -webkit-user-select: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  margin: 0 auto;
+}
+
+.mock-google-btn:hover {
+  background-color: #202124;
+  border-color: #a1a3a6;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.15);
+}
+
+.mock-google-btn:active {
+  transform: translateY(0);
+  background-color: #303134;
+}
+
+.mock-google-btn .google-icon {
+  flex-shrink: 0;
+}
+
+.mock-google-btn .btn-text {
+  white-space: nowrap;
+}

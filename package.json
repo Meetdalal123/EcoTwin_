@@ -1,0 +1,67 @@
+{
+  "name": "ecotwin-ai",
+  "version": "1.0.0",
+  "description": "Carbon Footprint Awareness Platform",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npm run build:css && npx -y http-server -p 3000 -c-1 -o",
+    "build:css": "node scripts/bundle-css.js",
+    "build": "npm run build:css && vite build && node -e \"const fs=require('fs');fs.cpSync('assets','dist/assets',{recursive:true});fs.cpSync('js','dist/js',{recursive:true});fs.cpSync('google-auth.js','dist/google-auth.js');fs.cpSync('config.js','dist/config.js');fs.cpSync('service-worker.js','dist/service-worker.js');\"",
+    "preview": "vite preview",
+    "test": "npm run build:css && jest",
+    "coverage": "jest --coverage",
+    "lint": "eslint js/**/*.js js/features/**/*.js",
+    "lint:fix": "eslint js/**/*.js js/features/**/*.js --fix",
+    "format": "prettier --write js/**/*.js js/features/**/*.js tests/**/*.js",
+    "format:check": "prettier --check js/**/*.js js/features/**/*.js"
+  },
+  "keywords": [
+    "carbon",
+    "tracker",
+    "sustainability"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jsdom": "^29.1.1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "esbuild": "^0.28.1",
+    "eslint": "^10.5.0",
+    "eslint-config-prettier": "^10.1.8",
+    "jest": "^30.4.2",
+    "jest-axe": "^10.0.0",
+    "jest-environment-jsdom": "^30.4.1",
+    "jest-localstorage-mock": "^2.4.26",
+    "nyc": "^18.0.0",
+    "prettier": "^3.8.4",
+    "vite": "^8.0.16"
+  },
+  "jest": {
+    "testEnvironment": "jsdom",
+    "setupFiles": [
+      "jest-localstorage-mock",
+      "<rootDir>/tests/setup.js"
+    ],
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "js/calculator.js",
+      "js/data.js",
+      "js/gamification.js",
+      "js/pledges.js",
+      "js/dashboard.js",
+      "js/ai-chat.js",
+      "js/db-sync.js",
+      "js/diagnostics.js"
+    ],
+    "coverageThreshold": {
+      "global": {
+        "branches": 80,
+        "functions": 80,
+        "lines": 80,
+        "statements": 80
+      }
+    }
+  }
+}

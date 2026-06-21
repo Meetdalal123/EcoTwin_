@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carbon Footprint 101 | EcoTwin AI</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;600;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Reuse existing theme styles -->
+  <link rel="stylesheet" href="css/bundle.css">
+  
+  <style>
+    :root {
+      --bg-primary: #040806;
+      --color-green-light: #34d399;
+      --color-teal: #06b6d4;
+      --text-muted: #94a3b8;
+      --glass-bg: rgba(8, 20, 13, 0.65);
+      --glass-border: rgba(52, 211, 153, 0.15);
+      --radius-xl: 24px;
+      --radius-lg: 16px;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      background-image: url('assets/eco_forest_bg.webp');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      font-family: 'Inter', sans-serif;
+      color: #f8fafc;
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+    }
+
+    .bg-overlay {
+      background: radial-gradient(circle at center, rgba(4, 8, 6, 0.4) 0%, rgba(4, 8, 6, 0.95) 100%);
+      min-height: 100vh;
+      width: 100%;
+    }
+
+    .edu-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 6rem 2rem 4rem;
+    }
+
+    .edu-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 1.25rem 2.5rem;
+      background: rgba(2, 8, 5, 0.65);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(52, 211, 153, 0.15);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .brand {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.5rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--color-green-light), var(--color-teal));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      text-decoration: none;
+    }
+
+    .brand i {
+      filter: drop-shadow(0 0 8px var(--color-green-light));
+    }
+
+    .back-btn {
+      background: rgba(52, 211, 153, 0.08);
+      border: 1px solid rgba(52, 211, 153, 0.3);
+      color: #fff;
+      font-family: 'Outfit', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      padding: 0.5rem 1.25rem;
+      border-radius: 30px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .back-btn:hover {
+      background: rgba(52, 211, 153, 0.15);
+      border-color: var(--color-green-light);
+      box-shadow: 0 0 15px rgba(52, 211, 153, 0.2);
+    }
+
+    /* Hero Section */
+    .hero-panel {
+      text-align: center;
+      margin-bottom: 4rem;
+      padding: 4rem 2rem;
+      background: rgba(8, 20, 13, 0.55);
+      backdrop-filter: blur(25px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-xl);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+    }
+
+    .hero-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 3.5rem;
+      font-weight: 900;
+      margin: 0 0 1rem;
+      background: linear-gradient(135deg, #fff 30%, #a7f3d0 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-subtitle {
+      font-size: 1.2rem;
+      color: var(--text-muted);
+      max-width: 700px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* Sections styling */
+    .edu-section {
+      margin-bottom: 5rem;
+    }
+
+    .section-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 2rem;
+    }
+
+    .section-title-wrap i {
+      color: var(--color-green-light);
+      filter: drop-shadow(0 0 8px var(--color-green-light));
+    }
+
+    .section-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 2rem;
+      font-weight: 800;
+      margin: 0;
+      background: linear-gradient(135deg, #fff 60%, var(--color-green-light) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .glass-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-lg);
+      padding: 2rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+
+    .glass-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(52, 211, 153, 0.3);
+    }
+
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+
+    @media (max-width: 992px) {
+      .grid-3, .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .grid-2, .grid-3, .grid-4 {
+        grid-template-columns: 1fr;
+      }
+      .hero-title {
+        font-size: 2.5rem;
+      }
+      .edu-container {
+        padding: 5rem 1.25rem 2rem;
+      }
+    }
+
+    /* Comparison Bar Chart Styling */
+    .chart-container {
+      margin-top: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .chart-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+
+    .chart-label-container {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+
+    .chart-bar-bg {
+      height: 24px;
+      background: rgba(255,255,255,0.05);
+      border-radius: 6px;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      border: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .chart-bar-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--color-teal), var(--color-green-light));
+      border-radius: 6px;
+      transition: width 1.5s ease-out;
+      width: 0%;
+      position: relative;
+    }
+
+    .chart-bar-value {
+      position: absolute;
+      right: 8px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: #040806;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    /* Action Cards Reduction */
+    .action-badge {
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.25);
+      color: var(--color-green-light);
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+      display: inline-block;
+      margin-top: 1rem;
+    }
+
+    /* Glossary Term */
+    .term-title {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--color-green-light);
+      margin-bottom: 0.5rem;
+    }
+
+    /* Myth/Fact Cards */
+    .myth-fact-card {
+      position: relative;
+      border-left: 4px solid var(--color-teal);
+    }
+
+    .myth-header {
+      font-family: 'Outfit', sans-serif;
+      color: #ef4444;
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .fact-header {
+      font-family: 'Outfit', sans-serif;
+      color: var(--color-green-light);
+      font-size: 0.95rem;
+      font-weight: 700;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    /* Call to Action panel */
+    .cta-panel {
+      background: linear-gradient(135deg, rgba(8, 20, 13, 0.8) 0%, rgba(6, 182, 212, 0.08) 100%);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-xl);
+      padding: 4rem 2rem;
+      text-align: center;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      margin-top: 4rem;
+    }
+
+    .cta-btn {
+      background: linear-gradient(135deg, var(--color-green-light), var(--color-teal));
+      border: none;
+      color: #040806;
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 800;
+      padding: 1rem 2.5rem;
+      border-radius: 30px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      box-shadow: 0 8px 24px rgba(16, 185, 129, 0.3);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 30px rgba(16, 185, 129, 0.5);
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-overlay">
+    
+    <!-- HEADER -->
+    <header class="edu-header">
+      <a href="index.html" class="brand">
+        <i data-lucide="leaf"></i> EcoTwin AI
+      </a>
+      <a href="index.html" class="back-btn">
+        <i data-lucide="arrow-left"></i> Back to App
+      </a>
+    </header>
+
+    <div class="edu-container">
+      
+      <!-- HERO -->
+      <section class="hero-panel">
+        <h1 class="hero-title">Carbon Footprint 101</h1>
+        <p class="hero-subtitle">
+          Your essential primer on greenhouse gas emissions, climate impacts, and the simple everyday actions you can take to make a global difference.
+        </p>
+      </section>
+
+      <!-- SECTION 1: WHAT IS IT -->
+      <section class="edu-section">
+        <div class="section-title-wrap">
+          <i data-lucide="globe"></i>
+          <h2 class="section-title">What is a Carbon Footprint?</h2>
+        </div>
+        <div class="grid-2">
+          <div class="glass-card">
+            <h3 style="margin-top:0;">The Definition</h3>
+            <p style="line-height:1.6; color: #cbd5e1;">
+              A carbon footprint is the total amount of greenhouse gases—including carbon dioxide (CO₂), methane (CH₄), nitrous oxide (N₂O), and fluorinated gases—emitted directly or indirectly by our daily activities. It covers everything from the electricity powering your home to the fuel burnt transporting the food on your plate.
+            </p>
+          </div>
+          <div class="glass-card" style="border-left: 4px solid var(--color-green-light);">
+            <h3 style="margin-top:0;">What is CO₂e?</h3>
+            <p style="line-height:1.6; color: #cbd5e1;">
+              Different gases trap heat at different intensities. Methane is over 25 times more potent than carbon dioxide. To simplify measuring, we convert all greenhouse emissions into their carbon dioxide equivalent weight: <strong>CO₂e</strong>. This provides a single unified metric for tracking global impact.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: WHY IT MATTERS -->
+      <section class="edu-section">
+        <div class="section-title-wrap">
+          <i data-lucide="alert-triangle"></i>
+          <h2 class="section-title">Why it Matters</h2>
+        </div>
+        <div class="grid-2">
+          <div class="glass-card" style="display:flex; flex-direction:column; justify-content:center;">
+            <h3 style="margin-top:0;">The Climate Blanket</h3>
+            <p style="line-height:1.6; color: #cbd5e1; margin-bottom:0;">
+              Greenhouse gases act like a thermal blanket wrapping our planet. The thicker the blanket, the more solar heat stays trapped. This accumulation is causing global average temperatures to rise, accelerating polar ice melts, severe droughts, extreme storms, and shifting ecosystems. 
+            </p>
+          </div>
+          <div class="glass-card" style="border-left: 4px solid var(--color-teal); background: rgba(6, 182, 212, 0.05);">
+            <h3 style="margin-top:0; color:var(--color-teal);">The Target: 2 Tons</h3>
+            <p style="line-height:1.6; color: #cbd5e1;">
+              To avoid catastrophic global warming and stabilize under the critical 1.5°C threshold set by climate science, the average individual carbon footprint must fall from the current global average down to a sustainable <strong>2 Tons CO₂e/year</strong> by 2050.
+            </p>
+            <div style="background: rgba(255,255,255,0.05); padding: 0.75rem; border-radius: 8px; margin-top: 1rem; font-size: 0.85rem;">
+              🌍 Current Global Average: <strong>~4.5 Tons/year</strong>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: CORE SOURCES -->
+      <section class="edu-section">
+        <div class="section-title-wrap">
+          <i data-lucide="pie-chart"></i>
+          <h2 class="section-title">Core Footprint Sources</h2>
+        </div>
+        <div class="grid-4">
+          <div class="glass-card">
+            <i data-lucide="car" style="color:var(--color-green-light); margin-bottom:0.5rem;"></i>
+            <h3 style="font-size:1.1rem; margin:0.5rem 0 0.25rem;">Transportation</h3>
+            <p style="font-size:0.85rem; line-height:1.5; color:var(--text-muted);">Solo passenger commutes and flights account for roughly <strong>30%</strong> of individual emissions.</p>
+          </div>
+          <div class="glass-card">
+            <i data-lucide="home" style="color:var(--color-teal); margin-bottom:0.5rem;"></i>
+            <h3 style="font-size:1.1rem; margin:0.5rem 0 0.25rem;">Home Energy</h3>
+            <p style="font-size:0.85rem; line-height:1.5; color:var(--text-muted);">Heating, cooling, and electricity use represent about <strong>27%</strong> of the personal footprint.</p>
+          </div>
+          <div class="glass-card">
+            <i data-lucide="utensils" style="color:var(--color-green-light); margin-bottom:0.5rem;"></i>
+            <h3 style="font-size:1.1rem; margin:0.5rem 0 0.25rem;">Diet & Food</h3>
+            <p style="font-size:0.85rem; line-height:1.5; color:var(--text-muted);">Agriculture and meat processing contribute <strong>20%</strong> of emissions, mostly via methane.</p>
+          </div>
+          <div class="glass-card">
+            <i data-lucide="shopping-bag" style="color:var(--color-teal); margin-bottom:0.5rem;"></i>
+            <h3 style="font-size:1.1rem; margin:0.5rem 0 0.25rem;">Consumption</h3>
+            <p style="font-size:0.85rem; line-height:1.5; color:var(--text-muted);">Purchasing manufactured goods and fast fashion comprises about <strong>23%</strong> of your impact.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 4: REGIONAL COMPARISONS -->
+      <section class="edu-section">
+        <div class="section-title-wrap">
+          <i data-lucide="bar-chart-2"></i>
+          <h2 class="section-title">Global Comparisons</h2>
+        </div>
+        <div class="glass-card">
+          <h3>Average Annual Footprint (Tons CO₂e/year)</h3>
+          <p style="color:var(--text-muted); font-size:0.9rem; margin-bottom: 2rem;">Carbon footprint sizes vary widely based on local resource infrastructure and consumption styles.</p>
+          
+          <div class="chart-container">
+            <div class="chart-row">
+              <div class="chart-label-container">
+                <span>United States (Average American)</span>
+                <span>15.5 Tons</span>
+              </div>
+              <div class="chart-bar-bg">
+                <div class="chart-bar-fill" data-width="100%"></div>
+              </div>
+            </div>
+
+            <div class="chart-row">
+              <div class="chart-label-container">
+                <span>Germany (Average European)</span>
+                <span>8.2 Tons</span>
+              </div>
+              <div class="chart-bar-bg">
+                <div class="chart-bar-fill" data-width="52.9%"></div>
+              </div>
+            </div>
+
+            <div class="chart-row">
+              <div class="chart-label-container">
+                <span>Global Average</span>
+                <span>4.5 Tons</span>
+              </div>
+              <div class="chart-bar-bg">
+                <div class="chart-bar-fill" data-width="29.0%"></div>
+              </div>
+            </div>
+
+            <div class="chart-row">
+              <div class="chart-label-container">
+                <span>India (Average Indian)</span>
+                <span>1.9 Tons</span>
+              </div>
+              <div class="chart-bar-bg">
+                <div class="chart-bar-fill" data-width="12.2%"></div>
+              </div>
+            </div>
+
+            <div class="chart-row">
+              <div class="chart-label-container" style="color:var(--color-green-light); font-weight:700;">
+                <span>Sustainable Target (Net Zero threshold)</span>
+                <span>2.0 Tons</span>
+              </div>
+              <div class="chart-bar-bg" style="border-color: rgba(52, 211, 153, 0.4);">
+                <div class="chart-bar-fill" data-width="12.9%" style="background: var(--color-green-light);"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 5: PRACTICAL ACTIONS -->
+      <section class="edu-section">
+        <div class="section-title-wrap">
+          <i data-lucide="check-circle-2"></i>
+          <h2 class="section-title">Everyday Actionable Reductions</h2>
+        </div>
+        <div class="grid-4">
+          <div class="glass-card">
+            <h3 style="font-size:1.15rem; color:#fff; margin-top:0;">Food</h3>
+            <p style="font-size:0.85rem; line-height:1.5;">Swap dairy and beef meals for plant-based grains or beans.</p>
+            <span class="action-badge">Saves ~1,200 kg CO₂e/yr</span>
+          </div>
+          <div class="glass-card">
+            <h3 style="font-size:1.15rem; color:#fff; margin-top:0;">Transport</h3>
+            <p style="font-size:0.85rem; line-height:1.5;">Car-free or ride sharing commutes to school/work weekly.</p>
+            <span class="action-badge">Saves ~800 kg CO₂e/yr</span>
+          </div>
+          <div class="glass-card">
+            <h3 style="font-size:1.15rem; color:#fff; margin-top:0;">Energy</h3>
+            <p style="font-size:0.85rem; line-height:1.5;">Replace standard incandescent bulbs with efficient LEDs.</p>
+            <span class="action-badge">Saves ~300 kg CO₂e/yr</span>
+          </div>
+          <div class="glass-card">
+            <h3 style="font-size:1.15rem; color:#fff; margin-top:0;">Shopping</h3>
+            <p style="font-size:0.85rem; line-height:1.5;">Avoid fast fashion: purchase durable, secondhand wear.</p>
+            <span class="action-badge">Saves ~500 kg CO₂e/yr</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 6: MYTHS VS FACTS -->
+      <section class="edu-section">
+        <div class="section-title-wrap">
+          <i data-lucide="sparkles"></i>
+          <h2 class="section-title">Myths vs Facts</h2>
+        </div>
+        <div class="grid-3">
+          <div class="glass-card myth-fact-card">
+            <div class="myth-header"><i data-lucide="x-circle"></i> Myth</div>
+            <p style="font-size:0.85rem; line-height:1.5; color:#fca5a5; margin:0 0 1rem 0;">Recycling is the best way to reduce my personal carbon footprint.</p>
+            <div class="fact-header"><i data-lucide="check-circle"></i> Fact</div>
+            <p style="font-size:0.85rem; line-height:1.5; color:#a7f3d0; margin:0;">While recycling is critical, switching to renewable home utilities and eating less red meat yields significantly higher footprint reductions.</p>
+          </div>
+
+          <div class="glass-card myth-fact-card" style="border-left-color: var(--color-green-light);">
+            <div class="myth-header"><i data-lucide="x-circle"></i> Myth</div>
+            <p style="font-size:0.85rem; line-height:1.5; color:#fca5a5; margin:0 0 1rem 0;">Electric vehicles have zero carbon footprint during use.</p>
+            <div class="fact-header"><i data-lucide="check-circle"></i> Fact</div>
+            <p style="font-size:0.85rem; line-height:1.5; color:#a7f3d0; margin:0;">An EV is only as clean as the power grid supplying its electricity. Charging on solar or wind power maximizes your footprint savings.</p>
+          </div>
+
+          <div class="glass-card myth-fact-card">
+            <div class="myth-header"><i data-lucide="x-circle"></i> Myth</div>
+            <p style="font-size:0.85rem; line-height:1.5; color:#fca5a5; margin:0 0 1rem 0;">Buying local food always cuts transport emissions down to zero.</p>
+            <div class="fact-header"><i data-lucide="check-circle"></i> Fact</div>
+            <p style="font-size:0.85rem; line-height:1.5; color:#a7f3d0; margin:0;">Transport represents a small portion of a meal's footprint. How food is grown and produced (e.g. heated glasshouses) matters much more.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 7: GLOSSARY -->
+      <section class="edu-section">
+        <div class="section-title-wrap">
+          <i data-lucide="book-open"></i>
+          <h2 class="section-title">Glossary of Key Terms</h2>
+        </div>
+        <div class="glass-card grid-2">
+          <div>
+            <div class="term-title">Carbon Footprint</div>
+            <p style="font-size:0.85rem; line-height:1.5; color:var(--text-muted); margin-bottom: 1.5rem;">The net greenhouse gas emissions caused directly and indirectly by an entity, individual, or event.</p>
+
+            <div class="term-title">Carbon Neutral</div>
+            <p style="font-size:0.85rem; line-height:1.5; color:var(--text-muted); margin-bottom: 1.5rem;">Balancing carbon releases with equivalent offsets so the net increase to global emissions equals zero.</p>
+
+            <div class="term-title">CO₂e (Equivalent)</div>
+            <p style="font-size:0.85rem; line-height:1.5; color:var(--text-muted); margin-bottom: 0;">A metric measure used to compare emissions from various greenhouse gases on the basis of their global warming potential.</p>
+          </div>
+          <div>
+            <div class="term-title">Net-Zero</div>
+            <p style="font-size:0.85rem; line-height:1.5; color:var(--text-muted); margin-bottom: 1.5rem;">Reducing greenhouse emissions as close to absolute zero as possible, offset only by natural sink removals (like forests).</p>
+
+            <div class="term-title">Carbon Offset</div>
+            <p style="font-size:0.85rem; line-height:1.5; color:var(--text-muted); margin-bottom: 0;">Compensating for carbon releases by funding equivalent emissions reduction projects elsewhere (e.g. planting trees).</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="cta-panel">
+        <h2 style="font-family:'Outfit',sans-serif; font-size: 2.2rem; font-weight: 800; margin: 0 0 1rem;">Ready to scan your Carbon Twin?</h2>
+        <p style="color:var(--text-muted); max-width: 600px; margin: 0 auto 2rem; line-height:1.6;">
+          Complete the diagnostic quiz on our dashboard to instantly calculate your annual emissions, track progress, and earn XP.
+        </p>
+        <a href="index.html" class="cta-btn">
+          <i data-lucide="sliders"></i> Calculate Your Footprint
+        </a>
+      </section>
+
+    </div>
+  </div>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Create Lucide Icons
+      if (window.lucide) {
+        lucide.createIcons();
+      }
+
+      // Animate comparative chart bars sequentially
+      const bars = document.querySelectorAll('.chart-bar-fill');
+      setTimeout(() => {
+        bars.forEach(bar => {
+          const widthVal = bar.getAttribute('data-width');
+          bar.style.width = widthVal;
+        });
+      }, 300);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+/* Extracted Static Layout Styles for Diet Calculator */
+body {
+  background: #040806;
+  min-height: 100vh;
+  overflow-y: auto;
+}
+.full-bg-layer {
+  background-image: url('../assets/eco_forest_bg.webp');
+  opacity: 1;
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background-size: cover;
+  background-position: center;
+}
+.bg-gradient-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: radial-gradient(circle at center, rgba(4,8,6,0.3) 0%, rgba(4,8,6,0.9) 100%);
+}
+.calculator-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1.25rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: rgba(2, 8, 5, 0.45);
+  backdrop-filter: blur(25px) saturate(1.8);
+  -webkit-backdrop-filter: blur(25px) saturate(1.8);
+  border-bottom: 1px solid rgba(52, 211, 153, 0.15);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 1px 1px rgba(255,255,255,0.05);
+}
+.calculator-brand {
+  font-family: 'Outfit', sans-serif;
+  font-size: 1.6rem;
+  font-weight: 900;
+  letter-spacing: -0.75px;
+  background: linear-gradient(135deg, var(--color-green-light), var(--color-teal));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  cursor: pointer;
+}
+.calculator-brand i {
+  filter: drop-shadow(0 0 8px var(--color-green-light));
+}
+.calculator-back-btn {
+  padding: 0.5rem 1.25rem;
+  font-size: 0.85rem;
+  border-radius: 30px;
+  font-weight: 700;
+  border: 1px solid rgba(52, 211, 153, 0.3);
+}
+.calculator-back-btn i {
+  width: 14px;
+  height: 14px;
+  margin-right: 5px;
+  vertical-align: middle;
+}
+.calculator-container-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 7.5rem 2rem 4rem;
+  box-sizing: border-box;
+  width: 100%;
+}
+.calculator-inner-container {
+  max-width: 700px;
+  width: 100%;
+  text-align: left;
+  margin: 0 auto;
+}
+.diet-calculator-wrapper .quiz-card {
+  width: 16.666%;
+  flex-shrink: 0;
+  box-sizing: border-box;
+  padding: 0 1rem;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease;
+}
+.diet-calculator-wrapper .quiz-card.active-step-pane {
+  opacity: 1;
+  pointer-events: auto;
+}
+.diet-centered-flex {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+}

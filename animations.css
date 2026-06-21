@@ -1,0 +1,734 @@
+/* e:\PromptWar\Challenge-3\css\animations.css */
+
+/* --- Keyframe Definitions --- */
+
+/* Page transition entry */
+@keyframes sectionReveal {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.97);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* Background parallax zoom */
+@keyframes bgZoomSlow {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.08);
+  }
+}
+
+/* Pulse energy borders */
+@keyframes greenPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(16, 185, 129, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
+@keyframes tealPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(6, 182, 212, 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(6, 182, 212, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(6, 182, 212, 0);
+  }
+}
+
+/* Premium Firefly Drifting & Pulsing animation */
+@keyframes leafDrift {
+  0% {
+    transform: translateY(-50px) translateX(0) scale(0.6);
+    opacity: 0;
+  }
+  15% {
+    opacity: 0.8;
+  }
+  50% {
+    transform: translateY(50vh) translateX(60px) scale(1.1);
+    opacity: 0.9;
+  }
+  85% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(105vh) translateX(-40px) scale(0.6);
+    opacity: 0;
+  }
+}
+
+/* Earth/Globe spin simulation */
+@keyframes rotatePlanet {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Floating effect for dashboard widgets */
+@keyframes floatElement {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* XP Bar Shimmer */
+@keyframes shimmerXP {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Breathing Scale Effect */
+@keyframes breathe {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.95;
+  }
+  50% {
+    transform: scale(1.03);
+    opacity: 1;
+  }
+}
+
+/* Staggered Card Entrance */
+@keyframes cardEntrance {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Rotating Gradient Borders */
+@keyframes borderRotate {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Chat Dot Pulsing Indicator */
+@keyframes dotPulse {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scale(1.25);
+    opacity: 1;
+  }
+}
+
+/* Success Validation bounce */
+@keyframes successBounce {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.08);
+  }
+}
+
+/* Input Error Shake */
+@keyframes errorShake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-5px); }
+  40%, 80% { transform: translateX(5px); }
+}
+
+/* --- Leaf Particles Container --- */
+.leaf-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Floating Carbon / Smog Emissions */
+.spore {
+  position: absolute;
+  bottom: -60px;
+  width: 14px;
+  height: 14px;
+  background: linear-gradient(135deg, rgba(100, 116, 139, 0.45), rgba(30, 41, 59, 0.15));
+  opacity: 0;
+  border-radius: 50%;
+  pointer-events: none;
+  animation: sporeFloat 16s ease-in-out infinite;
+  filter: blur(1.5px);
+  box-shadow: 
+    0 0 10px rgba(100, 116, 139, 0.25),
+    inset 0 1px 1px rgba(255, 255, 255, 0.08);
+}
+
+.spore:nth-child(2n) {
+  background: linear-gradient(135deg, rgba(71, 85, 105, 0.5), rgba(15, 23, 42, 0.2));
+  width: 8px;
+  height: 8px;
+  animation-duration: 20s;
+  animation-delay: 3s;
+  box-shadow: 0 0 8px rgba(71, 85, 105, 0.2);
+}
+
+.spore:nth-child(3n) {
+  background: linear-gradient(135deg, rgba(148, 163, 184, 0.4), rgba(30, 41, 59, 0.1));
+  width: 18px;
+  height: 18px;
+  animation-duration: 24s;
+  animation-delay: 6s;
+  box-shadow: 0 0 12px rgba(148, 163, 184, 0.25);
+}
+.spore:nth-child(4n) {
+  height: 8px;
+  animation-duration: 24s;
+  animation-delay: 6s;
+  box-shadow: 
+    0 0 10px rgba(251, 191, 36, 0.5),
+    0 0 20px rgba(251, 191, 36, 0.25);
+}
+
+@keyframes sporeFloat {
+  0% {
+    transform: translateY(0) translateX(0) scale(0.4) rotate(0deg);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.95;
+  }
+  50% {
+    transform: translateY(-55vh) translateX(-60px) scale(1.0) rotate(180deg);
+    opacity: 0.85;
+  }
+  80% {
+    opacity: 0.95;
+  }
+  100% {
+    transform: translateY(-110vh) translateX(40px) scale(0.4) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.leaf {
+  position: absolute;
+  top: -60px;
+  width: 16px;
+  height: 16px;
+  background: linear-gradient(135deg, rgba(52, 211, 153, 0.75), rgba(16, 185, 129, 0.35));
+  opacity: 0;
+  border-radius: 0 70% 0 70%;
+  transform-origin: center;
+  transform: rotate(45deg);
+  animation: leafDrift 16s ease-in-out infinite;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 
+    0 0 8px rgba(16, 185, 129, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* Create variations for falling leaf sizes and delays */
+.leaf:nth-child(2n) {
+  background: linear-gradient(135deg, rgba(20, 184, 166, 0.7), rgba(13, 148, 136, 0.35));
+  width: 12px;
+  height: 12px;
+  animation-duration: 22s;
+  animation-delay: 2.5s;
+}
+
+.leaf:nth-child(3n) {
+  background: linear-gradient(135deg, rgba(74, 222, 128, 0.75), rgba(34, 197, 94, 0.35));
+  width: 20px;
+  height: 20px;
+  animation-duration: 26s;
+  animation-delay: 6s;
+}
+
+.leaf:nth-child(4n) {
+  background: linear-gradient(135deg, rgba(16, 185, 129, 0.7), rgba(4, 120, 87, 0.35));
+  width: 14px;
+  height: 14px;
+  animation-duration: 19s;
+  animation-delay: 9s;
+}
+
+/* Cherry Blossom Petal */
+.blossom {
+  position: absolute;
+  top: -60px;
+  width: 14px;
+  height: 14px;
+  background: linear-gradient(135deg, rgba(251, 113, 133, 0.85), rgba(244, 63, 94, 0.45));
+  opacity: 0;
+  border-radius: 0 80% 10% 80%;
+  transform-origin: center;
+  transform: rotate(30deg);
+  animation: leafDrift 16s ease-in-out infinite;
+  box-shadow: 0 0 10px rgba(244, 63, 94, 0.3);
+}
+.blossom:nth-child(2n) {
+  background: linear-gradient(135deg, rgba(254, 205, 211, 0.9), rgba(251, 113, 133, 0.5));
+  width: 10px;
+  height: 10px;
+}
+.blossom:nth-child(3n) {
+  background: linear-gradient(135deg, rgba(253, 164, 175, 0.8), rgba(244, 63, 94, 0.35));
+  width: 16px;
+  height: 16px;
+}
+
+/* Glowing Spark / Energy particle */
+.spark {
+  position: absolute;
+  bottom: -60px;
+  width: 6px;
+  height: 6px;
+  background: linear-gradient(135deg, #22d3ee, #0891b2);
+  opacity: 0;
+  border-radius: 50%;
+  animation: sporeFloat 16s ease-in-out infinite;
+  box-shadow: 0 0 12px rgba(34, 211, 238, 0.8), 0 0 20px rgba(34, 211, 238, 0.4);
+}
+
+/* Achievement Star particle */
+.star-particle {
+  position: absolute;
+  top: -60px;
+  width: 10px;
+  height: 10px;
+  background: #f59e0b;
+  opacity: 0;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  animation: leafDrift 16s ease-in-out infinite;
+  box-shadow: 0 0 10px rgba(245, 158, 11, 0.7);
+}
+
+/* Fruit / Berry */
+.berry {
+  position: absolute;
+  top: -60px;
+  width: 10px;
+  height: 10px;
+  background: linear-gradient(135deg, #f87171, #dc2626);
+  opacity: 0;
+  border-radius: 50%;
+  animation: leafDrift 16s ease-in-out infinite;
+  box-shadow: 0 0 8px rgba(239, 68, 68, 0.5);
+}
+
+/* Glowing Pledge Heart */
+.heart-particle {
+  position: absolute;
+  top: -60px;
+  width: 10px;
+  height: 10px;
+  background: #10b981;
+  opacity: 0;
+  clip-path: polygon(50% 20%, 60% 0%, 100% 0%, 100% 40%, 50% 90%, 0% 40%, 0% 0%, 40% 0%);
+  animation: leafDrift 16s ease-in-out infinite;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+}
+
+/* Sunray particle */
+.sunray {
+  position: absolute;
+  top: -60px;
+  width: 12px;
+  height: 12px;
+  background: radial-gradient(circle, rgba(253, 224, 71, 0.9) 0%, rgba(234, 179, 8, 0.2) 70%);
+  opacity: 0;
+  border-radius: 50%;
+  animation: leafDrift 16s ease-in-out infinite;
+  box-shadow: 0 0 15px rgba(234, 179, 8, 0.6);
+}
+
+/* Digital Dot / Code bit */
+.digital-dot {
+  position: absolute;
+  top: -60px;
+  width: 8px;
+  height: 8px;
+  background: #34d399;
+  opacity: 0;
+  border-radius: 2px;
+  animation: leafDrift 16s ease-in-out infinite;
+  box-shadow: 0 0 8px rgba(52, 211, 153, 0.8);
+}
+
+/* --- Animation Classes --- */
+.animate-pulse-green {
+  animation: greenPulse 2s infinite;
+}
+
+.animate-pulse-teal {
+  animation: tealPulse 2s infinite;
+}
+
+.animate-float {
+  animation: floatElement 4s ease-in-out infinite;
+}
+
+.animate-spin-slow {
+  animation: rotatePlanet 40s linear infinite;
+}
+
+.reveal-fade {
+  animation: sectionReveal 0.5s ease-out forwards;
+}
+
+/* Utility Animations */
+.animate-shimmer {
+  animation: shimmerXP 3s infinite linear;
+}
+
+.animate-breathe {
+  animation: breathe 3s infinite ease-in-out;
+}
+
+.animate-entrance {
+  animation: cardEntrance 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Badge unlock pop-up alert */
+@keyframes badgePop {
+  0% {
+    transform: translate(-50%, -40%) scale(0.85);
+    opacity: 0;
+    backdrop-filter: blur(0);
+  }
+  15% {
+    transform: translate(-50%, -50%) scale(1.06);
+    opacity: 1;
+    backdrop-filter: blur(10px);
+  }
+  20% {
+    transform: translate(-50%, -50%) scale(1.0);
+    opacity: 1;
+    backdrop-filter: blur(10px);
+  }
+  80% {
+    transform: translate(-50%, -50%) scale(1.0);
+    opacity: 1;
+    backdrop-filter: blur(10px);
+  }
+  100% {
+    transform: translate(-50%, -60%) scale(0.92);
+    opacity: 0;
+    backdrop-filter: blur(0);
+  }
+}
+
+.badge-unlock-notification {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(10, 25, 20, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1.5px solid var(--color-green-glow);
+  box-shadow: 
+    0 12px 40px rgba(0, 0, 0, 0.6),
+    0 0 30px rgba(16, 185, 129, 0.3);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  z-index: 1000;
+  text-align: center;
+  pointer-events: none;
+  animation: badgePop 4.2s forwards cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.badge-unlock-notification i {
+  font-size: 3.2rem;
+  color: var(--color-amber);
+  margin-bottom: 1.25rem;
+  display: inline-block;
+  animation: floatElement 3s infinite ease-in-out;
+  filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.4));
+}
+
+.badge-unlock-notification h3 {
+  font-family: var(--font-heading);
+  color: var(--color-green-light);
+  margin-bottom: 0.6rem;
+  font-size: 1.6rem;
+  font-weight: 700;
+}
+
+.badge-unlock-notification p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+/* --- News Ticker Scroll --- */
+@keyframes tickerScroll {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+/* --- Page Transition Animation --- */
+.tab-panel.active {
+  display: block !important;
+  animation: pageSlideIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes pageSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px) scale(0.985);
+    filter: blur(6px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    filter: blur(0);
+  }
+}
+
+/* --- Background Blobs Drift Keyframes --- */
+@keyframes driftBlob1 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(100px, 60px) scale(1.12);
+  }
+  100% {
+    transform: translate(-40px, 120px) scale(0.92);
+  }
+}
+
+@keyframes driftBlob2 {
+  0% {
+    transform: translate(0, 0) scale(1.08);
+  }
+  50% {
+    transform: translate(-80px, -70px) scale(0.92);
+  }
+  100% {
+    transform: translate(60px, -30px) scale(1.15);
+  }
+}
+
+@keyframes driftBlob3 {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(-90px, 90px) scale(1.18);
+  }
+  100% {
+    transform: translate(80px, -50px) scale(0.95);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* --- Floating Hero Cards --- */
+@keyframes floatCard1 {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-10px) rotate(1deg); }
+}
+@keyframes floatCard2 {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(8px) rotate(-1deg); }
+}
+@keyframes floatCard3 {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-8px) rotate(-1deg); }
+}
+@keyframes floatCard4 {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(10px) rotate(1deg); }
+}
+
+.floating-stat-card {
+  transition: var(--transition-smooth);
+}
+.floating-stat-card:hover {
+  transform: scale(1.08) !important;
+  border-color: var(--color-green-glow) !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45), 0 0 20px rgba(16, 185, 129, 0.25) !important;
+  z-index: 20 !important;
+}
+
+/* Quiz Heading Glow Animation */
+@keyframes quizHeadingGlow {
+  0%, 100% {
+    text-shadow: 0 0 10px rgba(52, 211, 153, 0.2), 0 0 20px rgba(52, 211, 153, 0.1);
+  }
+  50% {
+    text-shadow: 0 0 20px rgba(52, 211, 153, 0.6), 0 0 35px rgba(52, 211, 153, 0.4), 0 0 50px rgba(6, 182, 212, 0.3);
+  }
+}
+
+.quiz-heading-glow {
+  animation: quizHeadingGlow 3s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .quiz-heading-glow {
+    animation: none;
+  }
+  *, ::before, ::after {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: scroll !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
+}
+
+/* --- Badge Unlock Animations --- */
+@keyframes badgeUnlockPulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(52, 211, 153, 0.7);
+  }
+  50% {
+    transform: scale(1.15);
+    box-shadow: 0 0 40px 20px rgba(52, 211, 153, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(52, 211, 153, 0);
+  }
+}
+
+.badge-unlock-anim {
+  animation: badgeUnlockPulse 1.2s cubic-bezier(0.16, 1, 0.3, 1) 2;
+}
+
+/* ===================== AI DRAWER ANIMATIONS ===================== */
+
+@keyframes aiDotBounce {
+  0%, 60%, 100% { transform: translateY(0); opacity: 0.5; }
+  30% { transform: translateY(-6px); opacity: 1; }
+}
+
+@keyframes aiPulseRing {
+  0% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.5), 0 8px 32px rgba(0,0,0,0.5); }
+  60% { box-shadow: 0 0 0 12px rgba(16, 185, 129, 0), 0 8px 32px rgba(0,0,0,0.5); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0), 0 8px 32px rgba(0,0,0,0.5); }
+}
+
+@keyframes aiMsgIn {
+  from { opacity: 0; transform: translateY(10px) scale(0.97); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* AI suggestion chips */
+.ai-chip {
+  background: rgba(16, 185, 129, 0.07);
+  border: 1px solid rgba(52, 211, 153, 0.2);
+  color: var(--color-green-light);
+  border-radius: 20px;
+  padding: 0.35rem 0.8rem;
+  font-size: 0.74rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+  letter-spacing: 0.2px;
+  white-space: nowrap;
+}
+
+.ai-chip:hover {
+  background: rgba(52, 211, 153, 0.16);
+  border-color: rgba(52, 211, 153, 0.45);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(16, 185, 129, 0.2);
+}
+
+/* Drawer open state */
+#ai-drawer.open {
+  transform: translateX(0) !important;
+}
+#ai-drawer-overlay.open {
+  opacity: 1 !important;
+  pointer-events: all !important;
+}
+
+/* AI message entry animation */
+.ai-msg-bubble {
+  animation: aiMsgIn 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Drawer scrollbar */
+#ai-drawer-messages::-webkit-scrollbar {
+  width: 4px;
+}
+#ai-drawer-messages::-webkit-scrollbar-track {
+  background: transparent;
+}
+#ai-drawer-messages::-webkit-scrollbar-thumb {
+  background: rgba(52, 211, 153, 0.2);
+  border-radius: 2px;
+}
+
+/* Reduced-motion accessibility overrides */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: initial !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
+}
