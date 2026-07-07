@@ -14,20 +14,24 @@ export default defineConfig({
     minify: 'esbuild',
     rollupOptions: {
       input: {
-        main: resolve(__dirname, 'index.html')
+        main: resolve(__dirname, 'index.html'),
+        diet: resolve(__dirname, 'diet-calculator.html'),
+        basics: resolve(__dirname, 'carbon-footprint-101.html'),
+        privacy: resolve(__dirname, 'privacy.html'),
+        notFound: resolve(__dirname, '404.html')
       },
       output: {
         // Group vendor chunks separately for better caching
-        chunkFileNames: 'js/chunks/[name]-[hash].js',
-        entryFileNames: 'js/[name]-[hash].js',
+        chunkFileNames: 'js/chunks/[name].js',
+        entryFileNames: 'js/[name].js',
         assetFileNames: (assetInfo) => {
           if (assetInfo.name && assetInfo.name.endsWith('.css')) {
-            return 'css/[name]-[hash][extname]';
+            return 'css/[name][extname]';
           }
           if (assetInfo.name && /\.(png|jpg|jpeg|webp|svg)$/.test(assetInfo.name)) {
-            return 'assets/[name]-[hash][extname]';
+            return 'assets/[name][extname]';
           }
-          return '[name]-[hash][extname]';
+          return '[name][extname]';
         }
       }
     }
